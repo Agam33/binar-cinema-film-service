@@ -1,0 +1,6 @@
+app:
+  jwt:
+    key: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+
+server:
+  port: 8080
