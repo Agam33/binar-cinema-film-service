@@ -14,9 +14,6 @@ public class JwtUtil {
     @Value("${app.jwt.key}")
     private String jwtKey;
 
-    @Value("${app.jwt.exp}")
-    private long jwtExpirations;
-
     @SuppressWarnings("deprecation")
     public String getUserNameFromJwtToken(String token) {
         return Jwts

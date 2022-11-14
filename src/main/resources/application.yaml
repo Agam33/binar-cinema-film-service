@@ -3,4 +3,13 @@ app:
     key: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
 
 server:
-  port: 8080
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      port: 27017
+      host: localhost
+      database: bioskop_db
+      password:

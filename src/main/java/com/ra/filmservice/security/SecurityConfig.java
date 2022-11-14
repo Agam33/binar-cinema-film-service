@@ -1,6 +1,6 @@
-package com.ra.filmservice.security.filters;
+package com.ra.filmservice.security;
 
-import com.ra.filmservice.security.AuthEntryPoint;
+import com.ra.filmservice.security.filters.AuthenticationJwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +21,8 @@ public class SecurityConfig {
         this.jwtFilter = jwtFilter;
         this.authEntryPoint = authEntryPoint;
     }
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.formLogin().disable();
@@ -47,7 +49,7 @@ public class SecurityConfig {
                 .authenticationEntryPoint(authEntryPoint)
 
                 .and()
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
         ;
         return http.build();
     }
