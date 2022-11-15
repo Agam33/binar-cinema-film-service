@@ -13,6 +13,5 @@ public interface FilmService {
     List<FilmDTO> nowPlaying();
     List<FilmDTO> addAll(List<Film> films);
     List<FilmDTO> getAllFilm();
-
     FilmDTO detailFilm(String filmId);
 }
