@@ -78,7 +78,6 @@ public class FilmServiceImpl implements FilmService {
         List<Film> films = filmRepository.findByOnShow(true);
         if(!films.isEmpty()) {
             return films.stream()
-                    .filter(Film::isOnShow)
                     .map(FilmMapper::toDto)
                     .toList();
         }
