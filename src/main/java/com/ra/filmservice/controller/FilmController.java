@@ -72,7 +72,7 @@ public class FilmController {
     @GetMapping("/nowPlaying")
     public ResponseEntity<?> nowPlaying() {
         try {
-            return ResponseEntity.ok(new Response<>(HttpStatus.ACCEPTED.value(), new Date(),
+            return ResponseEntity.ok(new Response<>(HttpStatus.OK.value(), new Date(),
                     Constants.SUCCESS_MSG, filmService.nowPlaying()));
         } catch (BioskopException.EntityNotFoundException e) {
             return new ResponseEntity<>(new ResponseError(e.getStatusCode().value(), new Date(), e.getMessage()),

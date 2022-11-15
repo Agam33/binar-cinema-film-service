@@ -25,7 +25,6 @@ public class FilmServiceImpl implements FilmService {
         this.filmRepository = filmRepository;
     }
 
-
     @Override
     public FilmDTO add(FilmDTO filmDTO) {
         if(filmRepository
@@ -76,7 +75,7 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public List<FilmDTO> nowPlaying() {
-        List<Film> films = filmRepository.findAll();
+        List<Film> films = filmRepository.findByOnShow(true);
         if(!films.isEmpty()) {
             return films.stream()
                     .filter(Film::isOnShow)
