@@ -5,17 +5,14 @@ import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BioskopConfig {
-
     @Bean
-    public MappingMongoConverter mappingMongoConverter(MongoDatabaseFactory factory,
-                                       MongoMappingContext context) throws Exception {
-        // remove _class
-        MappingMongoConverter converter = new MappingMongoConverter(factory, context);
-        converter.setTypeMapper(new DefaultMongoTypeMapper());
-        return converter;
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
 }

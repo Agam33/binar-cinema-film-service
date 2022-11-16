@@ -111,4 +111,6 @@ public class FilmServiceImpl implements FilmService {
         }
         throw throwException(ExceptionType.NOT_FOUND, HttpStatus.NOT_FOUND, Constants.NOT_FOUND_MSG);
     }
+
+
 }

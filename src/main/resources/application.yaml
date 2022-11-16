@@ -13,3 +13,8 @@ spring:
       host: localhost
       database: bioskop_db
       password:
+
+service:
+  client:
+    authService:
+      url: http://localhost:8080

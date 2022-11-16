@@ -5,6 +5,7 @@ import com.ra.filmservice.dto.model.FilmDTO;
 import com.ra.filmservice.dto.reponse.Response;
 import com.ra.filmservice.dto.reponse.ResponseError;
 import com.ra.filmservice.dto.request.FilmRequest;
+import com.ra.filmservice.dto.request.FilmUpdateRequest;
 import com.ra.filmservice.exception.BioskopException;
 import com.ra.filmservice.model.Film;
 import com.ra.filmservice.service.FilmService;
@@ -74,6 +75,29 @@ public class FilmController {
         try {
             return ResponseEntity.ok(new Response<>(HttpStatus.OK.value(), new Date(),
                     Constants.SUCCESS_MSG, filmService.nowPlaying()));
+        } catch (BioskopException.EntityNotFoundException e) {
+            return new ResponseEntity<>(new ResponseError(e.getStatusCode().value(), new Date(), e.getMessage()),
+                    e.getStatusCode());
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteFilm(@RequestParam(value = "id") String id) {
+        try {
+            return ResponseEntity.ok(new Response<>(HttpStatus.OK.value(), new Date(),
+                    Constants.SUCCESS_MSG, filmService.delete(id)));
+        } catch (BioskopException.EntityNotFoundException e){
+            return new ResponseEntity<>(new ResponseError(e.getStatusCode().value(), new Date(), e.getMessage()),
+                    e.getStatusCode());
+        }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> updateFilm(FilmUpdateRequest filmUpdateRequest) {
+        try {
+            return ResponseEntity.ok(new Response<>(HttpStatus.ACCEPTED.value(), new Date(),
+                    Constants.SUCCESS_MSG,
+                    filmService.updateName(filmUpdateRequest.getFilmCode(), filmUpdateRequest.getNewName())));
         } catch (BioskopException.EntityNotFoundException e) {
             return new ResponseEntity<>(new ResponseError(e.getStatusCode().value(), new Date(), e.getMessage()),
                     e.getStatusCode());
