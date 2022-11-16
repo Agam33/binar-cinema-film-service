@@ -1,0 +1,20 @@
+app:
+  jwt:
+    key: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      port: 27017
+      host: localhost
+      database: bioskop_db
+      password:
+
+service:
+  client:
+    authService:
+      url: http://localhost:8080
