@@ -47,8 +47,8 @@ public class FilmController {
                     Constants.SUCCESS_MSG,
                     filmService.detailFilm(id)));
         } catch (BioskopException.EntityNotFoundException e) {
-            return new ResponseEntity<>(new ResponseError(e.getStatusCode().value(), new Date(), e.getMessage()),
-                    e.getStatusCode());
+            return new ResponseEntity<>(new Response<>(e.getStatusCode().value(),
+                    new Date(), e.getMessage(), null), e.getStatusCode());
         }
     }
 
@@ -115,7 +115,6 @@ public class FilmController {
         filmDTO.getGenres().add(filmRequest.getGenre());
         return filmDTO;
     }
-
 
     private String getFilmCode(String filmTitle) {
         String[] codes = Constants.randomIdentifier(filmTitle);
