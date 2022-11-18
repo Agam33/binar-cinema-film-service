@@ -3,18 +3,21 @@ app:
     key: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
 
 server:
-  port: 8082
+  port: 8093
+
+#eureka:
+#  instance:
+#    hostname: binar-cinema-discovery.up.railway.app
+#  client:
+#    serviceUrl:
+#      defaultZone: https://${eureka.instance.hostname}/eureka
 
 spring:
   data:
     mongodb:
       auto-index-creation: true
-      port: 27017
-      host: localhost
+      port: 6575
+      host: containers-us-west-126.railway.app
       database: bioskop_db
-      password:
-
-service:
-  client:
-    authService:
-      url: http://localhost:8080
+      password: cMPtfjdrpfE3aiNkekPO
+      uri: mongodb://mongo:cMPtfjdrpfE3aiNkekPO@containers-us-west-126.railway.app:6575

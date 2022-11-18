@@ -31,6 +31,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
 
+                .antMatchers("/api/v1/films").permitAll()
+
                 .antMatchers("/api/v1/films/addAll", "/api/v1/films/add", "/api/v1/films/delete",
                         "/api/v1/films/update")
                 .hasRole("ADMIN")
